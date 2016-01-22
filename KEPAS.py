@@ -4,7 +4,7 @@ Created on Fri Jan 15 11:08:04 2016
 
 @author: YuKeji
 """
-#用来抓取特定路径上所有基因序列
+#用来抓取KEGG特定路径上所有基因序列
 
 #载入biopython的包
 from Bio.KEGG.REST import kegg_link
@@ -19,11 +19,11 @@ def http_byte2string(response):
     response_byte2string =response_read.decode()
     return response_byte2string
 #pathway作为输入   
-pathway = input('Iput pathway ID: ')    
+pathway = input('Iput pathway ID: ')   
 
 #用biopython内置函数kegg_link来获取pathway上所有的基因列表，为kegg的ID号
-gene_list_with_pathway = kegg_link('genes',pathway)
 print('Retreving gene list . . .')
+gene_list_with_pathway = kegg_link('genes',pathway)
 #转换为string格式
 gene_list_with_pathway_b2string = http_byte2string(gene_list_with_pathway)
 #将string按照\t和\n的分隔符分开
