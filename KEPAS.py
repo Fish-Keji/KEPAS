@@ -36,7 +36,7 @@ gene_list = gene_list_split[1::2]
 for i in gene_list:
     dir2save = '/Users/YuKeji/Documents/Lab/RNAseq_Data/'+pathway
     os.makedirs(dir2save, exist_ok=True)
-    time.sleep(1)
+    time.sleep(0.4)
     gene_Seq = kegg_get(i, 'ntseq')
     print('Retreving Sequence . . .')
     gene_Seq_byte2string = http_byte2string(gene_Seq)
