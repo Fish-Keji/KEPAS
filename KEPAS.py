@@ -6,6 +6,8 @@ Created on Fri Jan 15 11:08:04 2016
 """
 #用来抓取KEGG特定路径上所有基因序列
 
+
+import time
 #载入biopython的包
 from Bio.KEGG.REST import kegg_link
 from Bio.KEGG.REST import kegg_get
@@ -34,6 +36,7 @@ gene_list = gene_list_split[1::2]
 for i in gene_list:
     dir2save = '/Users/YuKeji/Documents/Lab/RNAseq_Data/'+pathway
     os.makedirs(dir2save, exist_ok=True)
+    time.sleep(1)
     gene_Seq = kegg_get(i, 'ntseq')
     print('Retreving Sequence . . .')
     gene_Seq_byte2string = http_byte2string(gene_Seq)
