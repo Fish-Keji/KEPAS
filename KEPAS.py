@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 15 11:08:04 2016
-
-@author: YuKeji
+@author: Fish-Keji
 """
 #用来抓取KEGG特定路径上所有基因序列
 
@@ -22,6 +20,7 @@ def http_byte2string(response):
     return response_byte2string
 #pathway作为输入   
 pathway = input('Iput pathway ID: ')   
+save_path = input('Input path to save: ')
 
 #用biopython内置函数kegg_link来获取pathway上所有的基因列表，为kegg的ID号
 print('Retreving gene list . . .')
@@ -34,7 +33,7 @@ gene_list_split = re.split('\n|\t', gene_list_with_pathway_b2string)
 gene_list = gene_list_split[1::2]
 #历遍列表中的每个基因 用kegg_get抓取对应的序列，保存在相同的路径
 for i in gene_list:
-    dir2save = '/Users/YuKeji/Documents/Lab/RNAseq_Data/'+pathway
+    dir2save = save_path+pathway
     os.makedirs(dir2save, exist_ok=True)
     time.sleep(0.4)
     gene_Seq = kegg_get(i, 'ntseq')
